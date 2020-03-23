@@ -1,0 +1,38 @@
+{
+  "intro_permission_location_title": "Location Permission",
+  "intro_permission_location_content": "We need your location to know if you may have crossed with an infected person",
+
+  "intro_permission_notifications_title": "Notification Permission",
+  "intro_permission_notifications_content": "We'd like to send you alerts",
+  "intro_permission_granted": "Permission Granted",
+  "intro_permission_ask": "Grant Permission",
+
+  "intro_geofence_drag_to_center": "Drag the map and center on your home area",
+
+  "intro_previous": "Prev",
+  "intro_next": "Next",
+  "intro_finish": "Finish",
+
+  "health_form_title": "Submit a health report",
+  "health_form_covid_checkbox": "I've been diagnosed with COVID-19",
+  "health_form_reference_number": "Medical reference number",
+  "health_form_submit": "Submit report",
+  
+  "home_enabled": "Enabled",
+  "home_disabled": "Disabled",
+  "home_recording": "Recording",
+  "home_not_recording": "Not recording",
+  "home_tracking_card_title": "Location tracking: %{trackingState}",
+  "home_tracking_card_body": ["Here you can enable/disable location tracking\n\n",
+                              "Your location history is stored securely on this device and never shared without your consent.\n\n",
+                              "Recording starts automatically when you leave your home area. The current status is: %{recordingState}"],
+  "home_view": "View",
+  "home_go": "Go",
+  "home_trips_card_title": "Update health status",
+  "home_health_card_title": "Update health status",
+
+  "nav_home": "Home",
+  "nav_intro": "Intro",
+  "nav_trips": "Trips",
+  "nav_health": "Health"
+}
