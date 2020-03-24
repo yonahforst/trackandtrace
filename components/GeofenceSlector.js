@@ -13,6 +13,7 @@ import {
   Colors,
 } from 'react-native-paper'
 
+
 const regionFromLocation = ({
   longitude,
   latitude,
@@ -30,17 +31,21 @@ export default ({
   center, 
   setCenter
 }) => {
-  
+
   const region = center && regionFromLocation(center)
   return (
     <Surface 
     style={style}>
-      <MapView
-      style={styles.map}
-      region={region}
-      zoomEnabled={false}
-      onRegionChangeComplete={setCenter}
-      />
+      { center && (
+        <MapView
+        style={styles.map}
+        initialRegion={region}
+        zoomEnabled={false}
+        rotateEnabled={false}
+        pitchEnabled={false}
+        onRegionChangeComplete={setCenter}
+        />
+      )}
 
       <View 
       pointerEvents='none'
