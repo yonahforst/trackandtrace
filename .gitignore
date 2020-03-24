@@ -16,3 +16,5 @@ web-report/
 
 #amplify
 aws-exports.js
+.firebaserc
+firebaseConfig.json
