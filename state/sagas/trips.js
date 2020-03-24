@@ -27,6 +27,8 @@ function* setGeofence({
   }
 }) {
 
+  yield delay(500) //debounce
+
   yield call(Location.startGeofencingAsync, GEOFENCE_TASK, [{
     longitude,
     latitude,
