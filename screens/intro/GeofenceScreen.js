@@ -16,19 +16,22 @@ import {
 import * as Location from 'expo-location';
 
 import GeofenceSlector from '../../components/GeofenceSlector'
+import NavigationBar from '../../components/NavigationBar'
 
 export default ({
   center,
-  setCenter
+  setCenter,
+  onPrev,
+  onNext,
 }) => {
 
   const fetchLocation = async () => {
     const {
       coords
     } = await Location.getLastKnownPositionAsync()
-
     setCenter(coords)
   }
+  
   useEffect(() => {
     if (!center)
       fetchLocation()
@@ -37,17 +40,25 @@ export default ({
   return (
     <View
     style={styles.container}>
-      <Text>
-        { i18n.t('intro_geofence_drag_to_center')}
-      </Text>
       <View
-      style={styles.geofenceContainer}>
-        <GeofenceSlector
-        style={styles.geofence}
-        center={center}
-        setCenter={setCenter}
-        />
+      style={styles.innerContainer}>
+        <Text>
+          { i18n.t('intro_geofence_drag_to_center')}
+        </Text>
+        <View
+        style={styles.geofenceContainer}>
+          <GeofenceSlector
+          style={styles.geofence}
+          center={center}
+          setCenter={setCenter}
+          />
+        </View>
       </View>
+
+      <NavigationBar
+      onPrev={onPrev}
+      onNext={onNext}
+      nextTitle={i18n.t('finish')}/>
     </View>
 
   )
@@ -55,6 +66,9 @@ export default ({
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+  },
+  innerContainer: {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',

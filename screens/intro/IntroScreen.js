@@ -17,8 +17,6 @@ import GeofenceScreen from './GeofenceScreen'
 
 import useStep from '../../hooks/useStep'
 
-import i18n from 'i18n-js'
-
 export default ({
   permissions,
   askPermission,
@@ -40,6 +38,8 @@ export default ({
           permissions={permissions}
           askPermission={askPermission}
           checkPermissions={checkPermissions}
+          onPrev={onPrev}
+          onNext={onNext}
           />
         )
 
@@ -48,6 +48,8 @@ export default ({
           <GeofenceScreen
           center={geofence}
           setCenter={setGeofence}
+          onPrev={onPrev}
+          onNext={onFinishIntro}
           />
         )
     }
@@ -57,20 +59,6 @@ export default ({
     <SafeAreaView
     style={styles.container}>
       { renderScreen() }
-
-      <View
-      style={styles.buttonsContainer}>
-        <Button 
-        disabled={!onPrev}
-        onPress={onPrev}>
-          {i18n.t('intro_previous')}
-        </Button>
-
-        <Button 
-        onPress={onNext || onFinishIntro}>
-          {onNext ? i18n.t('intro_next') : i18n.t('intro_finish')}
-        </Button>
-      </View>
     </SafeAreaView>
 
   )

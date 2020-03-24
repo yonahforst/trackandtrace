@@ -1,21 +1,24 @@
 {
   "intro_permission_location_title": "Location Permission",
-  "intro_permission_location_content": "We need your location to know if you may have crossed with an infected person",
-
+  "intro_permission_location_content": "We store your location history securely on this device and it's never shared without your explicit consent",
+  "intro_permission_location_denied": "Please open settings and enable location permissions",
   "intro_permission_notifications_title": "Notification Permission",
   "intro_permission_notifications_content": "We'd like to send you alerts",
   "intro_permission_granted": "Permission Granted",
+  "intro_permission_denied": "This feature is necessary for the app to work correctly. Please open settings to allow permission.",
   "intro_permission_ask": "Grant Permission",
 
   "intro_geofence_drag_to_center": "Drag the map and center on your home area",
 
-  "intro_previous": "Prev",
-  "intro_next": "Next",
-  "intro_finish": "Finish",
+  "previous": "Prev",
+  "next": "Next",
+  "finish": "Finish",
+  "open_settings": "Open Settings",
+  "cancel": "Cancel",
 
-  "health_form_title": "Submit a health report",
-  "health_form_covid_checkbox": "I've been diagnosed with COVID-19",
-  "health_form_reference_number": "Medical reference number",
+  "health_form_title": "Submit report",
+  "health_form_covid_checkbox": "I would like to share my location history",
+  "health_form_reference_number": "Reference number",
   "health_form_submit": "Submit report",
   
   "home_enabled": "Enabled",
@@ -29,7 +32,7 @@
   "home_view": "View",
   "home_go": "Go",
   "home_trips_card_title": "Trip history",
-  "home_health_card_title": "Update health status",
+  "home_health_card_title": "Submit report",
 
   "nav_home": "Home",
   "nav_intro": "Intro",
