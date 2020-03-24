@@ -13,3 +13,6 @@ web-report/
 # macOS
 .DS_Store
 .expo-shared
+
+#amplify
+aws-exports.js
