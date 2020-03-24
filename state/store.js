@@ -2,6 +2,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga'
 import { persistStore, persistReducer } from 'redux-persist'
+import { createBlacklistFilter } from 'redux-persist-transform-filter';
 
 import rootReducer from './reducers'
 import mySaga from './sagas'
@@ -10,10 +11,15 @@ import {
   AsyncStorage
 } from 'react-native'
 
+// you want to remove some keys before you save
+const blacklistFilter = createBlacklistFilter('health', [ 'error' ])
+
 const persistConfig = {
   key: 'root',
-  // whitelist: ['null'],
   storage: AsyncStorage,
+  transforms: [
+    blacklistFilter,
+  ]
 }
 
 // create the saga middleware
