@@ -28,7 +28,7 @@
                               "Recording starts automatically when you leave your home area. The current status is: %{recordingState}"],
   "home_view": "View",
   "home_go": "Go",
-  "home_trips_card_title": "Update health status",
+  "home_trips_card_title": "Trip history",
   "home_health_card_title": "Update health status",
 
   "nav_home": "Home",

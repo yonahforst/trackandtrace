@@ -79,12 +79,6 @@ export default ({
             {error}
           </HelperText>
 
-          <HelperText
-          type="error"
-          visble={!!error}>
-            {error}
-          </HelperText>
-
           <Button
           onPress={onSubmitReport}
           loading={isLoading}
