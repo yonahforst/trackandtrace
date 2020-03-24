@@ -15,6 +15,10 @@ const minStopDurationInSeconds = 10
 // continue in groups of 10 until the first point is more than 7.5 in distance 
 // add all points since the start point to the array of stops and restart
 
+
+//IDEAS:
+//each coordinate also contains a speed attribute in m/s. Should we use that instead?
+
 export const getStopsFromRoute = coordinates => {
   const stops = []
 

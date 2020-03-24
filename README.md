@@ -1,4 +1,4 @@
-# covidbegone
+# trackandtrace
 
 ### Get started
 - [Install](https://docs.expo.io/versions/v36.0.0/get-started/installation/) the `expo-cli`
@@ -12,7 +12,7 @@
   ```
     Yonahs-MacBook-Pro-2:react Yonah$ amplify init
     Note: It is recommended to run this command from the root of your app directory
-    ? Enter a name for the project covidbegone
+    ? Enter a name for the project trackandtrace
     ? Enter a name for the environment dev
     ? Choose your default editor: Visual Studio Code
     ? Choose the type of app that you're building javascript
