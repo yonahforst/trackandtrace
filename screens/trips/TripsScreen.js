@@ -16,6 +16,9 @@ import SelectableFlatList from '../../components/SelectableFlatList'
 export default ({
   history=[],
   deleteTrips,
+  navigation: {
+    navigate,
+  }
 }) => {
 
 
@@ -26,6 +29,9 @@ export default ({
 
     return {
       title: i18n.strftime(date, '%a %-d-%b %-H:%M'),
+      onPress: () => navigate('tripDetail', { 
+        tripId: item,
+      })
     }
   }
 

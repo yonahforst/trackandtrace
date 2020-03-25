@@ -8,6 +8,7 @@ import IntroConnector from '../intro/IntroConnector'
 import HomeConnector from '../home/HomeConnector'
 import TripsConnector from '../trips/TripsConnector'
 import HealthConnector from '../health/HealthConnector'
+import TripDetailConnector from '../tripDetail/TripDetailConnector'
 
 import PaperTheme from '../../constants/Theme'
 
@@ -53,6 +54,14 @@ export default ({
           component={HealthConnector} 
           options={{ title: i18n.t('nav_health') }}
           />
+          <Stack.Screen 
+          name="tripDetail" 
+          component={TripDetailConnector} 
+          options={({ route }) => ({ 
+            title: i18n.strftime(new Date(parseInt(route.params.tripId)), '%a %-d-%b %-H:%M')
+          })}
+          />
+          
           </>
         )}
       </Stack.Navigator>
