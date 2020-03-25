@@ -16,6 +16,7 @@ import {
   BACKGROUND_LOCATION_TASK,
   START_TRACKING_LOCATION,
   STOP_TRACKING_LOCATION,
+  TOGGLE_SHOULD_TRACK_LOCATION,
 } from '../constants'
 
 function* setGeofence({
@@ -43,11 +44,37 @@ function* geofenceTriggered({
 }) {
   yield delay(1000) //debounce
 
+  const {
+    user: {
+      shouldTrackLocation
+    }
+  } = yield select()
+
   if (eventType === Location.GeofencingEventType.Enter) {
     yield put({
       type: STOP_TRACKING_LOCATION,
     })
-  } else if (eventType === Location.GeofencingEventType.Exit) {
+  } else if (shouldTrackLocation && eventType === Location.GeofencingEventType.Exit) {
+    yield put({
+      type: START_TRACKING_LOCATION,
+    })
+  }
+}
+
+function* toggleShouldTrackLocation() {
+
+  const {
+    user: {
+      shouldTrackLocation,
+      lastGeofenceEvent,
+    }
+  } = yield select()
+
+  if (!shouldTrackLocation) {
+    yield put({
+      type: STOP_TRACKING_LOCATION,
+    })
+  } else if (lastGeofenceEvent === Location.GeofencingEventType.Exit ) {
     yield put({
       type: START_TRACKING_LOCATION,
     })
@@ -76,4 +103,5 @@ export default function* () {
   yield takeLatest(GEOFENCE_TRIGGERED, geofenceTriggered)
   yield takeLatest(START_TRACKING_LOCATION, startTrackingLocation)
   yield takeLatest(STOP_TRACKING_LOCATION, stopTrackingLocation)
+  yield takeLatest(TOGGLE_SHOULD_TRACK_LOCATION, toggleShouldTrackLocation)
 }

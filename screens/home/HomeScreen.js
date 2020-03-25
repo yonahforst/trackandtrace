@@ -18,6 +18,8 @@ import {
 import i18n from 'i18n-js'
 
 export default ({
+  toggleShouldTrackLocation,
+  shouldTrackLocation,
   isTrackingLocation,
   navigation,
 }) => {
@@ -29,22 +31,22 @@ export default ({
         <Card.Content>
           <Title>
             { i18n.t('home_tracking_card_title', {
-              trackingState: i18n.t('home_enabled').toUpperCase()
+              trackingState: i18n.t( shouldTrackLocation ? 'enabled' : 'disabled' ).toUpperCase()
             })}
           </Title>
 
           <Paragraph>            
             { i18n.t('home_tracking_card_body', {
-              recordingState: i18n.t(isTrackingLocation ? 'home_recording' : 'home_not_recording' ).toUpperCase()
+              recordingState: i18n.t(isTrackingLocation ? 'recording' : 'not_recording' ).toUpperCase()
             })}
           </Paragraph>
         </Card.Content>
-        {/** <Card.Actions style={styles.actions}>
+        <Card.Actions style={styles.actions}>
           <Button
-          disabled={true}>
-          Pause location tracking
+          onPress={toggleShouldTrackLocation}>
+            { i18n.t( shouldTrackLocation ? 'disable' : 'enable' ) }
           </Button>
-        </Card.Actions> **/}
+        </Card.Actions>
       </Card> 
 
       <Divider/>
