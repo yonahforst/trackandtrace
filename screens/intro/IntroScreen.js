@@ -12,6 +12,8 @@ import {
   Button 
 } from 'react-native-paper'
 
+import WhyScreen from './WhyScreen'
+import HowScreen from './HowScreen'
 import PermissionScreen from './PermissionScreen'
 import GeofenceScreen from './GeofenceScreen'
 
@@ -26,13 +28,29 @@ export default ({
   onFinishIntro,
 }) => {
 
-  const [ step, onPrev, onNext ] = useStep(1)
+  const [ step, onPrev, onNext ] = useStep()
 
   
 
   const renderScreen = () => {
     switch (step) {
       case 0:
+        return (
+          <WhyScreen
+          onPrev={onPrev}
+          onNext={onNext}
+          />
+        )
+
+      case 1:
+        return (
+          <HowScreen
+          onPrev={onPrev}
+          onNext={onNext}
+          />
+        )
+        
+      case 2:
         return (
           <PermissionScreen
           permissions={permissions}
@@ -43,7 +61,7 @@ export default ({
           />
         )
 
-      case 1:
+      case 3:
         return (
           <GeofenceScreen
           center={geofence}

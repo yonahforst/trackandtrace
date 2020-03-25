@@ -6,8 +6,14 @@ import {
 export default (max) => {
 
   const [ step, setStep ] = useState(0)
-  const onNext = step < max ? () => setStep(step + 1)  : undefined
-  const onPrev = step > 0 ? () => setStep(step -1) : undefined
+  
+  const onNext = max && step >= max 
+    ? undefined 
+    : () => setStep(step + 1)
+  
+  const onPrev = step < 1 
+    ? undefined 
+    : () => setStep(step -1)
 
   return [ step, onPrev, onNext ]
 }

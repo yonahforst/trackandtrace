@@ -1,4 +1,10 @@
 {
+  "intro_why_title": "What is Contact-tracing?",
+  "intro_why_body": "Contact-tracing is a critical tool for containing the spread of infectious diseases.\n\nIt allows health professionals to quickly get information and tests to the right people in order to prevent further transmission.",
+  "intro_how_title": "How this app works:",
+  "intro_how_body": ["This app works in the backgrouind using GPS and Bluetooth to identify other users you may have had contact with.\n\n",
+                    "This information securely encrypted and can only be decrypted by this device. Your data (encrypted or decrypted) is not shared with anyone without your explicit consent.\n\n",
+                    "This app constantly montors for new confirmed cases and will alert you if you've had significant contact another user and should get in touch with health professionals."],
   "intro_permission_location_title": "Location Permission",
   "intro_permission_location_content": "We store your location history securely on this device and it's never shared without your explicit consent",
   "intro_permission_location_denied": "Please open settings and enable location permissions",
