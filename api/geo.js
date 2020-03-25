@@ -19,28 +19,30 @@ const minStopDurationInSeconds = 10
 //IDEAS:
 //each coordinate also contains a speed attribute in m/s. Should we use that instead?
 
-export const getStopsFromRoute = coordinates => {
-  const stops = []
-
-  let startIndex = 0
+export const getStopsFromTrip = trip => {
+  const stopIndexes = getStopIndexesFromTrip(trip)
   
-  for (let i = 2; i < coordinates.length; i++) {
-    const startPoint = coordinates[startIndex]
-    const point = coordinates[i]
-    const timeDifference = point.timestamp - startPoint.timestamp
-
-    if (timeDifference < minStopDurationInSeconds * 1000)
-      continue;
-    
-    
-    const distance = getDistance(point.coords, startPoint.coords)
-
-    if (distance < avgWalkingSpeedInMetersPerSecond * minStopDurationInSeconds)
-      stops.push(coordinates.slice(startIndex, i))
-    
-    
-    startIndex = i
-  }
+  const stops = trip.filter((c, i) => stopIndexes.includes(i))
 
   return stops
+}
+
+export const getStopIndexesFromTrip = trip => {
+  const indexes = []
+  let isStopped = false
+  
+  for (let i = 1; i < trip.length; i++) {
+    const lastPoint = trip[i-1]
+    const point = trip[i]
+
+    const timeDifferenceSeconds = (point.timestamp - lastPoint.timestamp)/1000
+    const distance = getDistance(point.coords, lastPoint.coords)
+    
+    isStopped = distance < avgWalkingSpeedInMetersPerSecond * timeDifferenceSeconds
+
+    if (isStopped)
+      indexes.push(i)
+  }
+
+  return indexes
 }

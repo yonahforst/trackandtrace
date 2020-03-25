@@ -46,9 +46,12 @@ export default (state=initialState, {
 
     case LOCATION_UPDATED:
       const {
-        history,
+        history={},
         currentTripId,
       } = state
+
+      if (!currentTripId)
+        return state
 
       return {
         ...state,
@@ -56,7 +59,7 @@ export default (state=initialState, {
           ...history,
           [ currentTripId ]: [
             ...history[ currentTripId ],
-            ...payload.locations,
+            ...payload.locations.filter(l => l.coords.speed >= 0), //ignore negative values? they are causing some problems on the simulator. not sure about the real world
           ]
         }
       }

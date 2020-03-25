@@ -19,7 +19,7 @@ import {
 } from '../../api/aws'
 
 import {
-  getStopsFromRoute
+  getStopsFromTrip
 } from '../../api/geo'
 
 function* submitReport({
@@ -43,7 +43,7 @@ function* submitReport({
     const stops = []
 
     for (const id in history) {
-      const stop = yield call(getStopsFromRoute, history[id])
+      const stop = yield call(getStopsFromTrip, history[id])
       stops.push(stop)
     }
 
