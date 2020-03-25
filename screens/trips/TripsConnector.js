@@ -10,13 +10,12 @@ const mapStateToProps = (state, ownProps) => {
 
   const {
     trips: {
-      currentTripId,
-      history,
+      pastTripIds,
     }
   } = state 
 
   return {
-    history: Object.keys(history).filter(id => id != currentTripId)
+    tripIds: pastTripIds,
   }
 }
 

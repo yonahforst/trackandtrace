@@ -17,7 +17,11 @@ import {
   START_TRACKING_LOCATION,
   STOP_TRACKING_LOCATION,
   TOGGLE_SHOULD_TRACK_LOCATION,
+  ADD_TRIP,
+  DELETE_TRIPS,
 } from '../constants'
+
+import * as SecureStorage from '../../api/secureStorage'
 
 function* setGeofence({
   payload: {
@@ -96,6 +100,37 @@ function* stopTrackingLocation() {
   if (isTracking)
     yield call(Location.stopLocationUpdatesAsync, BACKGROUND_LOCATION_TASK)
 
+  const {
+    trips: {
+      locationBuffer,
+    }
+  } = yield select()
+
+  if (locationBuffer.length == 0)
+    return
+
+  const tripId = locationBuffer[0].timestamp.toString()
+  const stringified = JSON.stringify(locationBuffer)
+
+  yield call(SecureStorage.setItem, tripId, stringified)
+
+  yield put({
+    type: ADD_TRIP,
+    payload: {
+      tripId
+    }
+  })
+
+}
+
+function* deleteTrips({
+  payload: {
+    tripIds
+  }
+}) {
+  for (const tripId of tripIds) {
+    yield call(SecureStorage.removeItem, tripId)
+  }
 }
 
 export default function* () {
@@ -104,4 +139,5 @@ export default function* () {
   yield takeLatest(START_TRACKING_LOCATION, startTrackingLocation)
   yield takeLatest(STOP_TRACKING_LOCATION, stopTrackingLocation)
   yield takeLatest(TOGGLE_SHOULD_TRACK_LOCATION, toggleShouldTrackLocation)
+  yield takeEvery(DELETE_TRIPS, deleteTrips)
 }

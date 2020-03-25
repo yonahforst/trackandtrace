@@ -21,6 +21,7 @@ import {
   IconButton,
 } from 'react-native-paper';
 
+const noop = () => {}
 
 export default ({
   data,
@@ -53,7 +54,7 @@ export default ({
       [
         {
           text: 'Cancel',
-          onPress: () => console.log('Cancel Pressed'),
+          onPress: noop,
           style: 'cancel',
         },
         { text: bulkAction.title, onPress: onBulkAction},

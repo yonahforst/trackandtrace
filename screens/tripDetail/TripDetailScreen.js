@@ -1,5 +1,5 @@
 import React, {
-  useRef,
+  useRef, useState, useEffect,
 } from 'react'
 
 import {
@@ -19,6 +19,8 @@ import {
   getStopIndexesFromTrip
 } from '../../api/geo'
 
+import * as SecureStorage from '../../api/secureStorage'
+
 const edgePadding = {
   top: 20,
   bottom: 20,
@@ -26,14 +28,34 @@ const edgePadding = {
   right: 20,
 }
 
+
+
 export default ({
-  trip
+  route: {
+    params: {
+      tripId,
+    }
+  }
 }) => {
   const mapRef = useRef(null)
-  const coordinates = trip.map(i => i.coords)
-  const stopIndexes = getStopIndexesFromTrip(trip)
-  const strokeColors = coordinates.map((e, i) => stopIndexes.includes(i) ? Colors.red500 : Colors.green400 )
+  const [ coordinates, setCoordinates ] = useState()
+  const [ strokeColors, setStrokeColors ] = useState()
 
+  useEffect(() => {
+    getTripDetails(tripId)
+  }, [ tripId ])
+
+  const getTripDetails = async (tripId) => {
+    const trip = await SecureStorage.getItem(tripId)
+    const parsedTrip = JSON.parse(trip)
+    const coords = parsedTrip.map(i => i.coords)
+    const stopIndexes = getStopIndexesFromTrip(parsedTrip)
+    const colors = coords.map((e, i) => stopIndexes.includes(i) ? Colors.red500 : Colors.green400 )
+
+    setStrokeColors(colors)
+    setCoordinates(coords)
+  }
+  
   const onMapReady = () => mapRef.current.fitToCoordinates(coordinates, {
     edgePadding
   })
@@ -41,6 +63,7 @@ export default ({
   return (
     <View 
     style={styles.container}>
+    { coordinates && (
       <MapView
       ref={mapRef}
       style={styles.map}
@@ -58,7 +81,7 @@ export default ({
   
 
       </MapView>
-      
+    )}
     </View>
   )
 }

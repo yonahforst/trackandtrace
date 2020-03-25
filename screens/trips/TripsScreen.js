@@ -14,7 +14,7 @@ import SelectableFlatList from '../../components/SelectableFlatList'
 
 
 export default ({
-  history=[],
+  tripIds=[],
   deleteTrips,
   navigation: {
     navigate,
@@ -39,7 +39,7 @@ export default ({
     <View 
     style={styles.container}>
       <SelectableFlatList
-      data={history}
+      data={tripIds}
       renderItem={renderItem}
       bulkAction={{
         title: 'Delete Selected',

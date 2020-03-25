@@ -8,9 +8,10 @@ import IntroConnector from '../intro/IntroConnector'
 import HomeConnector from '../home/HomeConnector'
 import TripsConnector from '../trips/TripsConnector'
 import HealthConnector from '../health/HealthConnector'
-import TripDetailConnector from '../tripDetail/TripDetailConnector'
+// import TripDetailConnector from '../tripDetail/TripDetailConnector'
 
 import PaperTheme from '../../constants/Theme'
+import TripDetailScreen from '../tripDetail/TripDetailScreen';
 
 const Stack = createStackNavigator();
 
@@ -56,7 +57,7 @@ export default ({
           />
           <Stack.Screen 
           name="tripDetail" 
-          component={TripDetailConnector} 
+          component={TripDetailScreen} 
           options={({ route }) => ({ 
             title: i18n.strftime(new Date(parseInt(route.params.tripId)), '%a %-d-%b %-H:%M')
           })}
