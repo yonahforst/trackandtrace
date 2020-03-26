@@ -19,6 +19,7 @@ import {
   TOGGLE_SHOULD_TRACK_LOCATION,
   ADD_TRIP,
   DELETE_TRIPS,
+  CLEAR_LOCATION_BUFFER,
 } from '../constants'
 
 import * as SecureStorage from '../../api/secureStorage'
@@ -119,6 +120,10 @@ function* stopTrackingLocation() {
     payload: {
       tripId
     }
+  })
+
+  yield put({
+    type: CLEAR_LOCATION_BUFFER,
   })
 
 }

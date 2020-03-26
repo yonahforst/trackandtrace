@@ -1,6 +1,7 @@
 import {
   START_TRACKING_LOCATION,
   STOP_TRACKING_LOCATION,
+  CLEAR_LOCATION_BUFFER,
   LOCATION_UPDATED,
   DELETE_TRIPS,
   ADD_TRIP,
@@ -55,6 +56,12 @@ export default (state=initialState, {
           ...state.locationBuffer,
           ...payload.locations.filter(l => l.coords.speed >= 0), //ignore negative values? they are causing some problems on the simulator. not sure about the real world
         ]
+      }
+
+    case CLEAR_LOCATION_BUFFER:
+      return {
+        ...state,
+        locationBuffer: []
       }
 
     default:
