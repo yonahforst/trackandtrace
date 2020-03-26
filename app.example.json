@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "**REPLACE**",
-    "slug": "**REPLACE**",
+    "name": "REPLACE_WITH_YOUR_APP_NAME",
+    "slug": "REPLACE_WITH_YOUR_APP_SLUG",
     "privacy": "private",
     "sdkVersion": "36.0.0",
     "platforms": [
@@ -27,12 +27,12 @@
     "ios": {
       "buildNumber": "1",
       "supportsTablet": true,
-      "bundleIdentifier": "**REPLACE**",
+      "bundleIdentifier": "REPLACE.WITH.YOUR.BUNDLE.ID",
       "config": {
         "usesNonExemptEncryption": false
       },
       "infoPlist": {
-        "NSLocationAlwaysUsageDescription": "**REPLACE**",
+        "NSLocationAlwaysUsageDescription": "This app uses your location to... REPLACE",
         "UIBackgroundModes": [
           "location",
           "fetch"
@@ -40,11 +40,11 @@
       }
     },
     "android": {
-      "package": "**REPLACE**",
+      "package": "REPLACE.WITH.YOUR.BUNDLE.ID",
       "versionCode": 1,
       "config": {
         "googleMaps": {
-          "apiKey": "**REPLACE**"
+          "apiKey": "REPLACE_WITH_YOUR_GOOGLE_MAPS_API_KEY"
         }
       },
       "permissions": [

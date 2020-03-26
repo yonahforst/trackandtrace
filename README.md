@@ -4,6 +4,7 @@
 - [Install](https://docs.expo.io/versions/v36.0.0/get-started/installation/) the `expo-cli`
 - Install the dependencies (`npm i` or `yarn`)
 - Rename `aws-exports.example.js` to `aws-exports.js`
+- Rename `app.example.json` to `app.json` and replace values where indicated
 - Run `expo start`
 
 ## Backend
