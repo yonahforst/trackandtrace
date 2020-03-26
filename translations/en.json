@@ -4,17 +4,22 @@
   "intro_how_title": "How this app works:",
   "intro_how_body": ["This app works in the backgrouind using GPS and Bluetooth to identify other users you may have had contact with.\n\n",
                     "This information is securely encrypted and can only be decrypted by this device. Your data (encrypted or decrypted) is not shared with anyone without your explicit consent.\n\n",
-                    "This app constantly montors for new confirmed cases and will alert you if you've had significant contact another user and should get in touch with health professionals."],
+                    "This app constantly monitors for new data and will alert you if you've had significant contact with a confirmed case and should get in touch with health professionals."],
   "intro_permission_location_title": "Location Permission",
-  "intro_permission_location_content": "We store your location history securely on this device and it's never shared without your explicit consent",
+  "intro_permission_location_content": "Your location history is stored securely on this device and is never shared without your explicit consent",
   "intro_permission_location_denied": "Please open settings and enable location permissions",
   "intro_permission_notifications_title": "Notification Permission",
   "intro_permission_notifications_content": "We'd like to send you alerts",
+  "intro_permission_ble_title": "Bluetooth Permission",
+  "intro_permission_ble_content": "This app uses Bluetooth to find nearby users. This information is stored securely on this device and is never shared without your explicit consent",
+  "intro_permission_ble_denied": "Please open settings and enable Bluetooth permissions",
+  
   "intro_permission_granted": "Permission Granted",
   "intro_permission_denied": "This feature is necessary for the app to work correctly. Please open settings to allow permission.",
   "intro_permission_ask": "Grant Permission",
 
-  "intro_geofence_drag_to_center": "Drag the map and center on your home area",
+  "intro_geofence_title": "Drag the map to center on your home area",
+  "intro_geofence_body": "Tracking is paused and resumed when you enter and leave this area",
 
   "previous": "Prev",
   "next": "Next",
@@ -45,5 +50,7 @@
   "nav_home": "Home",
   "nav_intro": "Intro",
   "nav_trips": "Trips",
-  "nav_health": "Health"
+  "nav_health": "Health",
+
+  "share_body": "Help stop the spread of COVID-19. https://apps.apple.com/sg/app/tracetogether/id1504253273"
 }

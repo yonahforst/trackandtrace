@@ -1,5 +1,6 @@
 import React, {
   useEffect,
+  useState,
 } from 'react'
 
 import {
@@ -12,6 +13,7 @@ import {
 import {
   LOCATION,
   // NOTIFICATIONS,
+  
 } from 'expo-permissions'
 
 import i18n from 'i18n-js'
@@ -28,6 +30,8 @@ export default ({
   onNext,
 }) => {
 
+  const [ mockBlePermission, setMockBlePermission ] = useState({ status: 'undetermiend' })
+
   useEffect(() => {
     checkPermissions()
   }, [])
@@ -41,9 +45,17 @@ export default ({
         <PermissionCard
         title={i18n.t('intro_permission_location_title')}
         content={i18n.t('intro_permission_location_content')}
-        icon='pin'
+        icon='map-marker'
         permission={permissions[LOCATION] || {}}
         onRequestPermission={() => askPermission(LOCATION)}
+        />
+
+        <PermissionCard
+        title={i18n.t('intro_permission_ble_title')}
+        content={i18n.t('intro_permission_ble_content')}
+        icon='bluetooth-audio'
+        permission={mockBlePermission}
+        onRequestPermission={() => setMockBlePermission({ status: 'granted' })}
         />
       </View>
 
@@ -58,6 +70,7 @@ export default ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 20,
   },
   innerContainer: {
     flex: 1,

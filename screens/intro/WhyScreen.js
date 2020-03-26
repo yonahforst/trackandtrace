@@ -24,21 +24,19 @@ export default ({
 }) => (
   <View
   style={styles.container}>
+    <Image
+    style={styles.image}
+    resizeMode='contain'
+    source={require('../../assets/images/008-virus-1.png')}
+    />
     <View
     style={styles.innerContainer}>
 
-        
+    
       <Title 
       style={styles.title}>
         { i18n.t('intro_why_title') }
       </Title>
-
-      <Image
-      style={styles.image}
-      resizeMode='contain'
-      source={require('../../assets/images/008-virus-1.png')}
-      />
-
 
 
       <Paragraph
@@ -60,21 +58,23 @@ export default ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 20,
   },
   innerContainer: {
     flex: 1,
     justifyContent: 'space-evenly',
     alignItems: 'center',
-    padding: 20,
   },
   image: {
+    flex: 1,
     maxHeight: 300,
     maxWidth: 300,
+    alignSelf: 'center',
   },
   title: {
-    fontSize: 30,
+    fontSize: 25,
   },
   body: {
-    fontSize: 20
+    fontSize: 15
   }
 })

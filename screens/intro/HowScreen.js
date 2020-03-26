@@ -25,6 +25,12 @@ export default ({
 }) => (
   <View
   style={styles.container}>
+
+  <Image
+  style={styles.image}
+  resizeMode='contain'
+  source={require('../../assets/images/004-connection.png')}
+  />
     <View
     style={styles.innerContainer}>
 
@@ -34,11 +40,6 @@ export default ({
         { i18n.t('intro_how_title') }
       </Title>
 
-      <Image
-      style={styles.image}
-      resizeMode='contain'
-      source={require('../../assets/images/004-connection.png')}
-      />
 
 
 
@@ -61,21 +62,23 @@ export default ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  innerContainer: {
-    flex: 1,
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
     padding: 20,
   },
+  innerContainer: {
+    flex: 2,
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+  },
   image: {
-    maxHeight: 200,
-    maxWidth: 200,
+    flex: 1,
+    maxHeight: 300,
+    maxWidth: 300,
+    alignSelf: 'center',
   },
   title: {
-    fontSize: 30,
+    fontSize: 25,
   },
   body: {
-    fontSize: 20
+    fontSize: 15
   }
 })

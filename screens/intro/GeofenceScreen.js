@@ -10,7 +10,9 @@ import {
 import i18n from 'i18n-js'
 
 import { 
-  Text 
+  Text,
+  Subheading,
+  Surface,
 } from 'react-native-paper'
 
 import * as Location from 'expo-location';
@@ -29,6 +31,7 @@ export default ({
     const {
       coords
     } = await Location.getLastKnownPositionAsync()
+    
     setCenter(coords)
   }
   
@@ -42,17 +45,20 @@ export default ({
     style={styles.container}>
       <View
       style={styles.innerContainer}>
-        <Text>
-          { i18n.t('intro_geofence_drag_to_center')}
-        </Text>
-        <View
+        <Subheading>
+          { i18n.t('intro_geofence_title')}
+        </Subheading>
+        <Surface
         style={styles.geofenceContainer}>
           <GeofenceSlector
           style={styles.geofence}
           center={center}
           setCenter={setCenter}
           />
-        </View>
+        </Surface>
+        <Text>
+          { i18n.t('intro_geofence_body')}
+        </Text>
       </View>
 
       <NavigationBar
@@ -67,19 +73,21 @@ export default ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 20,
   },
   innerContainer: {
     flex: 1,
     flexDirection: 'column',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     alignItems: 'center',
   },
   geofenceContainer: {
     flexDirection: 'row',
+    margin: 10,
   },
   geofence: {
     flex: 1,
-    margin: 20,
+    margin: 5,
     aspectRatio: 1
   }
 
