@@ -1,4 +1,4 @@
-import * as TaskManager from 'expo-task-manager';
+// import * as TaskManager from 'expo-task-manager';
 
 import {
   store
@@ -9,21 +9,21 @@ import {
   LOCATION_UPDATED,
 } from '../state/constants';
 
-TaskManager.defineTask(BACKGROUND_LOCATION_TASK, ({ 
-  data: { 
-    locations, 
-  }, 
-  error,
-}) => {
-  if (error)
-    console.error(error)
+// TaskManager.defineTask(BACKGROUND_LOCATION_TASK, ({ 
+//   data: { 
+//     locations, 
+//   }, 
+//   error,
+// }) => {
+//   if (error)
+//     console.error(error)
   
-  store.dispatch({
-    type: LOCATION_UPDATED,
-    payload: {
-      locations,
-    },
-  })
+//   store.dispatch({
+//     type: LOCATION_UPDATED,
+//     payload: {
+//       locations,
+//     },
+//   })
   
 
-})
+// })

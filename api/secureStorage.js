@@ -9,17 +9,19 @@ import {
 import ab2s from 'arraybuffer-to-string'
 import CryptoJS from 'crypto-js'
 
-const KEY = 'SECURE_STORAGE-RANDOM_PASSWORD_KEY'
-
 const generateRandomPassword = async () => {
   const byteArray = await Random.getRandomBytesAsync(256)
   return ab2s(byteArray, 'base64')
 }
 
-const getPassword = async ({ 
-  shouldGenerate 
+
+const getPasswordWithPrefix = async (prefix, {
+  shouldGenerate
 }={}) => {
-  let password = await SecureStore.getItemAsync(KEY)
+
+  const key = prefix + '_RANDOM_PASSWORD'
+
+  let password = await SecureStore.getItemAsync(key)
 
   if (!password) {
 
@@ -28,7 +30,7 @@ const getPassword = async ({
 
     password = await generateRandomPassword()
 
-    await SecureStore.setItemAsync(KEY, password, {
+    await SecureStore.setItemAsync(key, password, {
       keychainAccessible: SecureStore.AFTER_FIRST_UNLOCK,
     })
   }
@@ -36,24 +38,24 @@ const getPassword = async ({
   return password
 }
 
-export const setItem = async (key, value) => {
-  const password = await getPassword({
+const setItemWithPrefix = prefix => async (key, value) => {
+  const password = await getPasswordWithPrefix(prefix, {
     shouldGenerate: true,
   })
 
   const encryptedValue = CryptoJS.AES.encrypt(value, password).toString()
   
-  const res = await AsyncStorage.setItem(key, encryptedValue)
+  await AsyncStorage.setItem(prefix + key, encryptedValue)
 
 } 
 
-export const getItem = async (key) => {
-  const encryptedValue = await AsyncStorage.getItem(key)
+const getItemWithPrefx= prefix => async (key) => {
+  const encryptedValue = await AsyncStorage.getItem(prefix + key)
 
   if (!encryptedValue)
     return
 
-  const password = await getPassword()
+  const password = await getPasswordWithPrefix(prefix)
 
   const bytes  = CryptoJS.AES.decrypt(encryptedValue, password)
   const decryptedValue = bytes.toString(CryptoJS.enc.Utf8)
@@ -61,6 +63,12 @@ export const getItem = async (key) => {
   return decryptedValue
 }
 
-export const removeItem = async (key) => {
-  await AsyncStorage.removeItem(key)
+const removeItemWithPrefix = prefix => async (key) => {
+  await AsyncStorage.removeItem(prefix + key)
 }
+
+export const init = (prefix) => ({
+  getItem: getItemWithPrefx(prefix),
+  setItem: setItemWithPrefix(prefix),
+  removeItem: removeItemWithPrefix(prefix),
+})

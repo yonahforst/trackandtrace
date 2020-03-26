@@ -28,6 +28,8 @@ const edgePadding = {
   right: 20,
 }
 
+const secured = SecureStorage.init('TRIPS')
+
 
 
 export default ({
@@ -46,7 +48,7 @@ export default ({
   }, [ tripId ])
 
   const getTripDetails = async (tripId) => {
-    const trip = await SecureStorage.getItem(tripId)
+    const trip = await secured.getItem(tripId)
     const parsedTrip = JSON.parse(trip)
     const coords = parsedTrip.map(i => i.coords)
     const stopIndexes = getStopIndexesFromTrip(parsedTrip)

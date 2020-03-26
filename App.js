@@ -1,4 +1,4 @@
-import { AppLoading } from 'expo';
+// import { AppLoading } from 'expo';
 import React from 'react';
 import { StatusBar } from 'react-native'
 import { Provider as StoreProvider } from 'react-redux'
@@ -23,13 +23,14 @@ i18n.locale = Localization.locale;
 i18n.translations = translations;
 i18n.fallbacks = true;
 
-export default function App() {
 
+
+export default function App() {
   return (
     <StoreProvider store={store}>
       <StatusBar barStyle="dark-content" />
 
-      <PersistGate loading={<AppLoading/>} persistor={persistor}>
+      <PersistGate persistor={persistor}>
         <PaperProvider>
           <NavigationConnector />
         </PaperProvider>

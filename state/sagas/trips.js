@@ -23,6 +23,8 @@ import {
 
 import * as SecureStorage from '../../api/secureStorage'
 
+const secured = SecureStorage.init('TRIPS')
+
 function* setGeofence({
   payload: {
     coordinates: {
@@ -112,7 +114,7 @@ function* stopTrackingLocation() {
   const tripId = locationBuffer[0].timestamp.toString()
   const stringified = JSON.stringify(locationBuffer)
 
-  yield call(SecureStorage.setItem, tripId, stringified)
+  yield call(secured.setItem, tripId, stringified)
 
   yield put({
     type: ADD_TRIP,
@@ -129,7 +131,7 @@ function* deleteTrips({
   }
 }) {
   for (const tripId of tripIds) {
-    yield call(SecureStorage.removeItem, tripId)
+    yield call(secured.removeItem, tripId)
   }
 }
 

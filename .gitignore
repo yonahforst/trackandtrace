@@ -18,3 +18,5 @@ web-report/
 aws-exports.js
 .firebaserc
 firebaseConfig.json
+android/.gradle
+ios/Pods

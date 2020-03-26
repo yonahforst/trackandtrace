@@ -1,11 +1,9 @@
 {
-  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "eject": "expo eject"
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "web": "expo start --web"
   },
   "dependencies": {
     "@react-native-community/masked-view": "0.1.5",
@@ -30,13 +28,16 @@
     "jdbscan": "^1.0.0",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
+    "react-native": "~0.61.4",
+    "react-native-discovery": "file:../react-native-discovery",
     "react-native-gesture-handler": "~1.5.0",
+    "react-native-ibeacon-simulator": "^1.0.10",
     "react-native-maps": "0.26.1",
     "react-native-paper": "^3.6.0",
     "react-native-reanimated": "~1.4.0",
     "react-native-safe-area-context": "0.6.0",
     "react-native-screens": "2.0.0-alpha.12",
+    "react-native-unimodules": "~0.7.0",
     "react-native-web": "~0.11.7",
     "react-redux": "^7.2.0",
     "redux": "^4.0.5",
@@ -48,7 +49,11 @@
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
-    "babel-preset-expo": "~8.0.0"
+    "babel-jest": "~24.9.0",
+    "babel-preset-expo": "~8.0.0",
+    "jest": "~24.9.0",
+    "metro-react-native-babel-preset": "~0.56.0",
+    "react-test-renderer": "~16.9.0"
   },
   "private": true
 }

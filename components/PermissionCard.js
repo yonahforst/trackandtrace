@@ -2,7 +2,7 @@ import React from 'react'
 
 import {
   StyleSheet,
-  Linking,
+  // Linking,
   Alert,
 } from 'react-native'
 
@@ -28,7 +28,7 @@ const alertOpenSettings = (title, body) => {
         onPress: () => {},
         style: 'cancel',
       },
-      { text: i18n.t('open_settings'), onPress: () => Linking.openURL('app-settings:') },
+      // { text: i18n.t('open_settings'), onPress: () => Linking.openURL('app-settings:') },
     ],
   )
 }
