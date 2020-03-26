@@ -1,0 +1,56 @@
+{
+  "expo": {
+    "name": "**REPLACE**",
+    "slug": "**REPLACE**",
+    "privacy": "private",
+    "sdkVersion": "36.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#F5F5F5"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+
+    "ios": {
+      "buildNumber": "1",
+      "supportsTablet": true,
+      "bundleIdentifier": "**REPLACE**",
+      "config": {
+        "usesNonExemptEncryption": false
+      },
+      "infoPlist": {
+        "NSLocationAlwaysUsageDescription": "**REPLACE**",
+        "UIBackgroundModes": [
+          "location",
+          "fetch"
+        ]
+      }
+    },
+    "android": {
+      "package": "**REPLACE**",
+      "versionCode": 1,
+      "config": {
+        "googleMaps": {
+          "apiKey": "**REPLACE**"
+        }
+      },
+      "permissions": [
+        "ACCESS_FINE_LOCATION"
+      ]
+    }
+  }
+}
+

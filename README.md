@@ -1,12 +1,16 @@
 # trackandtrace
 
-### Get started
+## Get started
 - [Install](https://docs.expo.io/versions/v36.0.0/get-started/installation/) the `expo-cli`
 - Install the dependencies (`npm i` or `yarn`)
+- Rename `aws-exports.example.js` to `aws-exports.js`
 - Run `expo start`
 
+## Backend
 
-### Setup AWS Amplify
+These steps are only required when you want to start submitting data. They are not required to just run the app.
+
+### AWS Amplify
 - [Install and configure](https://aws-amplify.github.io/docs/cli-toolchain/quickstart?sdk=js) the `@aws-amplify/cli`
 - From the root directory, run `amplify init`
   ```
