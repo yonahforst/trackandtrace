@@ -11,16 +11,16 @@ import {
   PERMISSIONS_UPDATED,
 } from '../constants'
 
-import * as Permissions from 'expo-permissions';
+import * as ExpoPermissions from 'expo-permissions';
 
 function* checkPermissions() {
 
   const { 
     permissions, 
   } = yield call(
-    Permissions.getAsync, 
-    Permissions.NOTIFICATIONS,
-    Permissions.LOCATION,
+    ExpoPermissions.getAsync, 
+    ExpoPermissions.NOTIFICATIONS,
+    ExpoPermissions.LOCATION,
   )
 
   yield put({
@@ -39,7 +39,7 @@ function* askPermission ({
 
   const { 
     permissions 
-  } = yield call(Permissions.askAsync, permission)
+  } = yield call(ExpoPermissions.askAsync, permission)
 
   yield put({
     type: PERMISSIONS_UPDATED,
