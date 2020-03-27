@@ -36,7 +36,7 @@ There's a branch where I've started adding BLE, but it requires using the 'bare 
 - [ ] add todos
 
 ## CONTRIBUTORS WELCOME!
-[join the slack chat](https://trackandtrace-slack-invite.herokuapp.com/invite)
+[join the slack chat](https://trackandtrace-slack-invite.herokuapp.com)
 
 ## Get started
 - [Install](https://docs.expo.io/versions/v36.0.0/get-started/installation/) the `expo-cli`
