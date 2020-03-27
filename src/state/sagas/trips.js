@@ -38,7 +38,7 @@ function* setGeofence({
   yield call(Location.startGeofencingAsync, GEOFENCE_TASK, [{
     longitude,
     latitude,
-    radius: 100,
+    radius: 10,
   }])
 }
 
