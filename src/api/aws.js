@@ -2,7 +2,7 @@ import Amplify, {
   Auth,
   Storage,
 } from "aws-amplify";
-import config from '../aws-exports'
+import config from '../../aws-exports'
 import cuid from 'cuid'
 Amplify.configure(config)
 Storage.configure({ 

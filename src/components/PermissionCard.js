@@ -36,6 +36,7 @@ const alertOpenSettings = (title, body) => {
 export default ({
   title,
   subtitle,
+  deniedText=i18n.t('intro_permission_denied'),
   content,
   icon,
   permission,
@@ -65,7 +66,7 @@ export default ({
     return (
       <Button 
       mode="contained"
-      onPress={() => alertOpenSettings(title, i18n.t('intro_permission_denied'))}>
+      onPress={() => alertOpenSettings(title, deniedText)}>
         { i18n.t('intro_permission_ask') }
       </Button>
     )

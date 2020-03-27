@@ -29,7 +29,7 @@ export default ({
   <Image
   style={styles.image}
   resizeMode='contain'
-  source={require('../../assets/images/004-connection.png')}
+  source={require('../../../assets/images/004-connection.png')}
   />
     <View
     style={styles.innerContainer}>

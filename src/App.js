@@ -14,7 +14,7 @@ import {
 } from './state/store'
 
 import translations from './translations'
-import NavigationConnector from './screens/nav/NavigationConnector';
+import NavigationConnector from './screens/nav/NavigationConnector'
 
 import './tasks/geofenceTask'
 import './tasks/backgroundLocationTask'

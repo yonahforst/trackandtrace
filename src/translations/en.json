@@ -7,9 +7,10 @@
                     "This app constantly monitors for new data and will alert you if you've had significant contact with a confirmed case and should get in touch with health professionals."],
   "intro_permission_location_title": "Location Permission",
   "intro_permission_location_content": "Your location history is stored securely on this device and is never shared without your explicit consent",
-  "intro_permission_location_denied": "Please open settings and enable location permissions",
+  "intro_permission_location_denied": "Please open settings and set Location permission to 'Always'",
   "intro_permission_notifications_title": "Notification Permission",
   "intro_permission_notifications_content": "We'd like to send you alerts",
+
   "intro_permission_ble_title": "Bluetooth Permission",
   "intro_permission_ble_content": "This app uses Bluetooth to find nearby users. This information is stored securely on this device and is never shared without your explicit consent",
   "intro_permission_ble_denied": "Please open settings and enable Bluetooth permissions",

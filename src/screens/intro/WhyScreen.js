@@ -27,7 +27,7 @@ export default ({
     <Image
     style={styles.image}
     resizeMode='contain'
-    source={require('../../assets/images/008-virus-1.png')}
+    source={require('../../../assets/images/008-virus-1.png')}
     />
     <View
     style={styles.innerContainer}>

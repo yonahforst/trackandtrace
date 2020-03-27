@@ -49,6 +49,7 @@ export default ({
         
           <List.Item
           title={i18n.t('health_form_covid_checkbox')}
+          titleNumberOfLines={2}
           left={props => (
             <Checkbox.Android 
             {...props} 

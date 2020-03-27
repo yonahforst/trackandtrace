@@ -45,6 +45,7 @@ export default ({
         <PermissionCard
         title={i18n.t('intro_permission_location_title')}
         content={i18n.t('intro_permission_location_content')}
+        deniedText={i18n.t('intro_permission_location_denied')}
         icon='map-marker'
         permission={permissions[LOCATION] || {}}
         onRequestPermission={() => askPermission(LOCATION)}

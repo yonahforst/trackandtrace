@@ -118,6 +118,7 @@ export default ({
     
     return (
       <List.Item
+      style={styles.item}
       {...renderItem(props)}
       left={props => isEditing ? (
         <IconButton
@@ -154,4 +155,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1, 
   },
+  item: {
+    backgroundColor: 'white',
+  }
 })
