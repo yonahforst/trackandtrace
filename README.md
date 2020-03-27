@@ -1,5 +1,42 @@
 # trackandtrace
 
+
+## About this project
+
+Yet another open source contact-tracing app to help fight COVID-19. There are similar projects underway [here](https://www.tracetogether.gov.sg/), [here](https://www.haaretz.com/israel-news/israel-unveils-app-that-uses-tracking-to-tell-users-if-they-were-near-virus-cases-1.8702055), [here](https://github.com/tripleblindmarket/private-kit), and [here](https://github.com/WorldHealthOrganization/app) (among many others, I'm sure). 
+
+When we encounter a new case of COVID-19, we know that it's important to identify who may have had contact with that person to avoid spreading it any further. China and South Korea have done it (see [Patient 31](https://graphics.reuters.com/CHINA-HEALTH-SOUTHKOREA-CLUSTERS/0100B5G33SB/index.html)). 
+
+**But how can we do this while preserving people privacy and anonymity?**
+
+One solution where many people have ended up is this: 
+- Everyone tracks and controls their own data (decryption key lives on their devices). 
+- Make available a highly anonymized dataset which users can download and compare to their own to determine if they've had contact with COVID-19.
+- If they have, alert them of recommended actions (maybe provide a reference number to prioritize testing)
+
+That's exactly what this app does.
+
+It's built in React Native using the awesome Expo toolchain. It uses Geofencing to record your location only when you've exited your 'home area'. (Save battery while you're in quarantine. Although as I write this, I realized that my phone now plugged in all day. hummm...)
+
+These location logs are encrypted and stored on the device.
+
+If you're diagnosed with COVID-19, you can choose to decrypt and share an anonymized version of your location history.
+
+**You might ask:** If my location history always starts and finishes at my home, _that's not very anonymous..._
+Great point! Indeed it's not. That's why **the app only shares when and where you've stopped and likely had contact with others**, such as the grocery store or bumping into a friend on the street. When these stops are mixed in with the stops of many other users, it becomes impossible to trace a single users path. 
+
+
+**Did someone say bluetooth?**
+BLE is a great way to broadcast some anonymous UUID and let people record that they've seen you. One problem is that iOS does not support BLE advertising in the background, so you would have to walk around with the app open and the screen unlocked. Not very practical. The other problem is that I'm under lockdown in my apartment and can't get to the Android device I have at work :(
+
+There's a branch where I've started adding BLE, but it requires using the 'bare workflow' from Expo and you miss out on a lot of their magic.
+
+## TODO
+- [ ] add todos
+
+## CONTRIBUTORS WELCOME!
+[join the slack chat](https://trackandtrace-slack-invite.herokuapp.com/invite)
+
 ## Get started
 - [Install](https://docs.expo.io/versions/v36.0.0/get-started/installation/) the `expo-cli`
 - Install the dependencies (`npm i` or `yarn`)
