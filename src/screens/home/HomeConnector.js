@@ -6,10 +6,15 @@ import {
   toggleShouldTrackLocation,
 } from '../../state/actions/user'
 
+import {
+  LOCATION
+} from 'expo-permissions'
+
 const mapStateToProps = (state, ownProps) => {
   return {
     isTrackingLocation: state.trips.isTrackingLocation,
     shouldTrackLocation: state.user.shouldTrackLocation,
+    locationPermission: state.permissions[LOCATION],
   }
 }
 
