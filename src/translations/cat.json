@@ -1,0 +1,56 @@
+{
+  "intro_why_title": "Què és traçabilitat de contactes?",
+  "intro_why_body": "La traçabilitat de contactes és una eina crucial per poder contenir l'expansió de malalties infeccioses.\n\nPermet als professionals de la salut informar-se ràpidament i testar-la amb les persones adequades per prevenir la transmissió.",
+  "intro_how_title": "Com funciona la app:",
+  "intro_how_body": ["Aquesta app funciona en segon pla, utilitzant GPS i Bluetooth per identificar a altres usuaris amb qui hagis pogut tenir contacte.\n\n",
+  "Aquesta informació està encriptada de forma segura i només es pot desencriptar a través del teu mòbil. Les teves dates (encriptades o desencriptades) no es comparteixen amb ningú sense el teu consentiment explícit.\n\n",
+  "Aquesta app constantment monitoritza noves dades, t’alertarà si has tingut contacte significatiu amb un cas confirmat i et dirà si t'hauries de posar amb contacte amb professionals de la salut."],
+  "intro_permission_location_title": "Permís de localització",
+  "intro_permission_location_content": "Emmagatzema l'historial de les teves localitzacions al teu mòbil de forma segura i mai les compartirem sense el teu consentiment explícit",
+  "intro_permission_location_denied": "Per favor, obra ajustos i assigna el permís de localització a 'sempre'",
+  "intro_permission_notifications_title": "Permís de notificacions",
+  "intro_permission_notifications_content": "Ens agradaria enviar-te alertes",
+  "intro_permission_granted": "Permís concedit",
+  "intro_permission_denied": "Aquesta característica és necessària per tal que l'app funcioni correctament. Per favor, obre ajustos per donar permís.",
+  "intro_permission_ask": "Dona permís",
+
+
+
+  "intro_permission_ble_title": "Permís de Bluetooth",
+  "intro_permission_ble_content": "Aquesta app utilitza Bluetooth per localitzar l'usuari més proper. Aquesta informació s'emmagatzema de forma segura en aquest mòbil i mai es comparteix sense el teu consentiment explícit",
+  "intro_permission_ble_denied": "Per favor, obre ajustos i activa el permís de Bluetooth",
+  "intro_geofence_body": "La traçabilitat queda pausada i es torna a activar quan entres o abandones aquesta zona",
+  "share_body": "Ajuda a parar l'expansió del COVID-19. https://apps.apple.com/sg/app/tracetogether/id1504253273", 
+  
+  "intro_geofence_drag_to_center": "Arrossega el mapa per centrar casa teva",
+  
+  "previous": "Anterior",
+  "next": "Pròxim",
+  "finish": "Acabar",
+  "open_settings": "Obre ajustos",
+  "cancel": "Cancel·la",
+  "enabled": "Permès",
+  "enable": "Permet",
+  "disabled": "Desactivat",
+  "disable": "Desactiva",
+  "recording": "Grava",
+  "not_recording": "No està gravant",
+  
+  "health_form_title": "Emet informe",
+  "health_form_covid_checkbox": "M'agradaria compartir el meu historial de localitzacions",
+  "health_form_reference_number": "número de referència",
+  "health_form_submit": "Emet informe",
+  "home_tracking_card_title": "Seguiment de localització: %{trackingState}",
+  "home_tracking_card_body": ["Aquí pots donar permís/desactivar permís de seguiment de localització\n\n",
+                              "El teu historial de localitzacions està guardat de forma segura en el teu mòbil i mai es compartirà sense el teu consentiment.\n\n",
+                              "Es començarà a gravar automàticament quan surtis de la zona de casa teva. El teu estatus és: %{recordingState}"],
+  "home_view": "Visiona",
+  "home_go": "Vés",
+  "home_trips_card_title": "Historial de viatges",
+  "home_health_card_title": "Emet informe",
+  
+  "nav_home": "Home",
+  "nav_intro": "Intro",
+  "nav_trips": "Viatges",
+  "nav_health": "Salut"
+}
