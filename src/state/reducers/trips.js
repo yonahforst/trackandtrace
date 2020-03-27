@@ -17,15 +17,12 @@ export default (state=initialState, {
   payload={},
 }) => {
 
-  const now = Date.now()
-
   switch (type) {
     case START_TRACKING_LOCATION:
 
       return {
         ...state,
         isTrackingLocation: true,
-        locationBuffer: [],
       }
 
     case STOP_TRACKING_LOCATION:
@@ -54,7 +51,7 @@ export default (state=initialState, {
         ...state,
         locationBuffer: [
           ...state.locationBuffer,
-          ...payload.locations.filter(l => l.coords.speed >= 0), //ignore negative values? they are causing some problems on the simulator. not sure about the real world
+          ...payload.locations,
         ]
       }
 
