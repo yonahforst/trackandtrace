@@ -20,20 +20,41 @@ import {
 
 import i18n from 'i18n-js'
 
+const ListItem = ({
+  title,
+  checked,
+  disabled,
+  setChecked,
+  ...props
+}) => (
+  <List.Item
+  {...props}
+  title={title}
+  onPress={() => setChecked(!checked)}
+  left={props => 
+    <Checkbox.Android 
+    {...props} 
+    disabled={disabled}
+    status={checked ? 'checked' : 'unchecked'}
+    onPress={() => setChecked(!checked)}
+    />
+  }/>
+)
+
 export default ({
-  referenceNumber='',
   submitReport,
-  hasCovid,
+  shareConsent,
+  symptoms={},
   isLoading,
   error,
 }) => {
-  const [ checked, setChecked ] = useState(hasCovid)
-  const [ text, setText ] = useState(referenceNumber)
+  const [ consentCheckbox, setConsentCheckbox ] = useState(shareConsent)
+  const [ symptomCheckboxes, setSymptomCheckboxes ] = useState(symptoms)
 
   const onSubmitReport = () => {
     return submitReport({
-      hasCovid: checked,
-      referenceNumber: text,
+      consent: consentCheckbox,
+      symptoms: symptomCheckboxes,
     })
   }
 
@@ -46,30 +67,49 @@ export default ({
         title={i18n.t('health_form_title')}
         />
         <Card.Content>
-        
-          <List.Item
-          title={i18n.t('health_form_covid_checkbox')}
-          titleNumberOfLines={2}
-          left={props => (
-            <Checkbox.Android 
-            {...props} 
-            disabled={isLoading}
-            status={checked ? 'checked' : 'unchecked'}
-            onPress={() => setChecked(!checked)}
+          <List.Section>
+            <List.Subheader>
+              {i18n.t('health_form_symptoms_header')}
+            </List.Subheader>
+            <ListItem
+            title={i18n.t('fever')}
+            checked={symptomCheckboxes['fever']}
+            setChecked={fever => setSymptomCheckboxes({
+              ...symptomCheckboxes,
+              fever
+            })}
             />
-          )}
-          />
+            <ListItem
+            title={i18n.t('cough')}
+            checked={symptomCheckboxes['cough']}
+            setChecked={cough => setSymptomCheckboxes({
+              ...symptomCheckboxes,
+              cough
+            })}
+            />
+            <ListItem
+            title={i18n.t('breathing')}
+            checked={symptomCheckboxes['breathing']}
+            setChecked={breathing => setSymptomCheckboxes({
+              ...symptomCheckboxes,
+              breathing
+            })}
+            />
+          </List.Section>
 
-          {checked && (
-            <TextInput 
-            style={styles.input}
-            label={i18n.t('health_form_reference_number')}
-            value={text} 
-            disabled={isLoading}
-            // mode='outlined'
-            onChangeText={setText}
+          <List.Section>
+            <List.Subheader>
+              {i18n.t('health_form_consent_header')}
+            </List.Subheader>
+
+            <ListItem
+            title={i18n.t('health_form_consent_checkbox')}
+            titleNumberOfLines={2}
+            checked={consentCheckbox}
+            setChecked={setConsentCheckbox}
             />
-          )}
+          </List.Section>
+
         </Card.Content>
         
         <Card.Actions
@@ -83,7 +123,7 @@ export default ({
           <Button
           onPress={onSubmitReport}
           loading={isLoading}
-          disabled={isLoading || !checked || (text && text.length == 0)}
+          disabled={isLoading || !consentCheckbox }
           mode='contained'>
             {i18n.t('health_form_submit')}
           </Button>

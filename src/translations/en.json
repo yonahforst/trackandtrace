@@ -34,9 +34,16 @@
   "recording": "Recording",
   "not_recording": "Not recording",
 
-  "health_form_title": "Submit report",
-  "health_form_covid_checkbox": "I would like to share my location history",
-  "health_form_reference_number": "Reference number",
+  "fever": "Fever",
+  "cough": "Cough",
+  "breathing": "Difficulty Breathing",
+
+  "health_form_title": "Submit a health report",
+  "health_form_symptoms_header": "Which of these symptoms do you have?",
+  
+  "health_form_consent_header": "Do you agree to share your location history?",
+  "health_form_consent_checkbox": "I agree to share my anonymized location history",
+  "health_form_reference_number": "Medical reference number",
   "health_form_submit": "Submit report",
   
   "home_tracking_card_title": "Location tracking: %{trackingState}",

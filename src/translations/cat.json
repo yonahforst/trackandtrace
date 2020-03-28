@@ -37,7 +37,8 @@
   "not_recording": "No està gravant",
   
   "health_form_title": "Emet informe",
-  "health_form_covid_checkbox": "M'agradaria compartir el meu historial de localitzacions",
+  "health_form_covid_checkbox": "MISSING",
+  "health_form_consent_checkbox": "M'agradaria compartir el meu historial de localitzacions",
   "health_form_reference_number": "número de referència",
   "health_form_submit": "Emet informe",
   "home_tracking_card_title": "Seguiment de localització: %{trackingState}",

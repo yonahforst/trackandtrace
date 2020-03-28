@@ -24,8 +24,7 @@ import {
 
 function* submitReport({
   payload: {
-    hasCovid,
-    referenceNumber,
+    symptoms,
   }
 }) {
 
@@ -47,13 +46,15 @@ function* submitReport({
       stops.push(stop)
     }
 
-    yield call(uploadReportToS3, stops)
+    yield call(uploadReportToS3, {
+      stops,
+      symptoms,
+    })
 
     yield put({
       type: SUBMIT_REPORT_SUCCESS,
       payload: {
-        hasCovid,
-        referenceNumber,
+        symptoms
       }
     })
 

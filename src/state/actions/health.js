@@ -3,12 +3,12 @@ import {
 } from '../constants'
 
 export const submitReport = ({
-  referenceNumber,
-  hasCovid,
+  consent,
+  symptoms,
 }) => ({
   type: SUBMIT_REPORT,
   payload: {
-    referenceNumber,
-    hasCovid,
+    consent,
+    symptoms,
   }
 })
