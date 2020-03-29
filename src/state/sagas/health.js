@@ -20,7 +20,7 @@ import {
 
 import {
   getStopsFromTrip
-} from '../../api/geo'
+} from '../../api/geo.js'
 
 function* submitReport({
   payload: {

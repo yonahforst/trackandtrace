@@ -1,7 +1,7 @@
-import { 
-  getDistance,
-  getCenter,
-} from 'geolib';
+import * as Geo from 'geolib';
+
+import * as D3 from 'd3-polygon'
+
 
 //https://en.wikipedia.org/wiki/Preferred_walking_speed
 const avgWalkingSpeedInMetersPerSecond = 1.33
@@ -19,30 +19,49 @@ const minStopDurationInSeconds = 10
 //IDEAS:
 //each coordinate also contains a speed attribute in m/s. Should we use that instead?
 
+
+
 export const getStopsFromTrip = trip => {
-  const stopIndexes = getStopIndexesFromTrip(trip)
-  
-  const stops = trip.filter((c, i) => stopIndexes.includes(i))
-
-  return stops
+  const stops = trip.reduce(stopReducer, [])
+  return stops.map(points => ({
+    startedAt: points[0].timestamp,
+    endedAt: points[points.length-1].timestamp,
+    polygon: boundingPolygonFromPoints(points),
+  }))
 }
 
-export const getStopIndexesFromTrip = trip => {
-  const indexes = []
-  let isStopped = false
+
+const stopReducer = (acc, cur, idx, src) => {
+  if (idx == 0) 
+    return acc// for the first element, there's no last point
   
-  for (let i = 1; i < trip.length; i++) {
-    const lastPoint = trip[i-1]
-    const point = trip[i]
+  const stoppedNow = isStopped(cur, src[idx-1])
+  const wasStopped = src[idx-2] && isStopped(src[idx-1], src[idx-2])
 
-    const timeDifferenceSeconds = (point.timestamp - lastPoint.timestamp)/1000
-    const distance = getDistance(point.coords, lastPoint.coords)
-    
-    isStopped = distance < avgWalkingSpeedInMetersPerSecond * timeDifferenceSeconds
+  if (!wasStopped && stoppedNow) // if you just stopped
+    acc.push([ src[idx-1], cur ])
 
-    if (isStopped)
-      indexes.push(i)
-  }
+  if (wasStopped && stoppedNow) // if you're still stopped
+    acc[acc.length -1].push(cur) 
 
-  return indexes
+  return acc
 }
+
+const isStopped = (pointA, pointB) => {
+  return distanceBetweenPoints(pointA, pointB) / secondsBetweenPoints(pointA, pointB) < avgWalkingSpeedInMetersPerSecond 
+}
+
+const distanceBetweenPoints = (pointA, pointB) => Geo.getDistance(pointA.coords, pointB.coords)
+const secondsBetweenPoints = (pointA, pointB) => Math.abs(pointA.timestamp - pointB.timestamp)/1000
+
+
+const boundingPolygonFromPoints = points => {
+  const coordinateArray = points.map(p => coordObjToCoordArray(p.coords))
+  const polygonArray = D3.polygonHull(coordinateArray) || coordinateArray //d3 returns null for less than 3 points
+  return polygonArray.map(coordArrayToCoordObj)
+}
+ 
+const coordObjToCoordArray = ({ longitude, latitude }) => [ longitude, latitude ]
+const coordArrayToCoordObj = ([ longitude, latitude ]) => ({ longitude, latitude })
+
+export const getDistance  = Geo.getDistance

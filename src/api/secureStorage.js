@@ -41,14 +41,14 @@ export const setItem = async (key, value) => {
     shouldGenerate: true,
   })
 
-  const encryptedValue = CryptoJS.AES.encrypt(value, password).toString()
+  const stringifiedValue = JSON.stringify(value)
+  const encryptedValue = CryptoJS.AES.encrypt(stringifiedValue, password).toString()
   
-  const res = await AsyncStorage.setItem(key, encryptedValue)
-
+  await AsyncStorage.setItem(key.toString(), encryptedValue)
 } 
 
 export const getItem = async (key) => {
-  const encryptedValue = await AsyncStorage.getItem(key)
+  const encryptedValue = await AsyncStorage.getItem(key.toString())
 
   if (!encryptedValue)
     return
@@ -58,7 +58,7 @@ export const getItem = async (key) => {
   const bytes  = CryptoJS.AES.decrypt(encryptedValue, password)
   const decryptedValue = bytes.toString(CryptoJS.enc.Utf8)
 
-  return decryptedValue
+  return JSON.parse(decryptedValue)
 }
 
 export const removeItem = async (key) => {

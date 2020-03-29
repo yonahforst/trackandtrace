@@ -24,6 +24,10 @@ import {
 
 import * as SecureStorage from '../../api/secureStorage'
 
+import {
+  getStopsFromTrip
+} from '../../api/geo.js'
+
 function* setGeofence({
   payload: {
     coordinates: {
@@ -110,18 +114,13 @@ function* stopTrackingLocation() {
   if (locationBuffer.length == 0)
     return
 
-  const tripId = locationBuffer[0].timestamp.toString()
-  const stringified = JSON.stringify(locationBuffer)
-
-  yield call(SecureStorage.setItem, tripId, stringified)
-
-  yield put({
-    type: ADD_TRIP,
-    payload: {
-      tripId
-    }
-  })
-
+  const prevStops = yield call(SecureStorage.getItem, 'stops')
+  
+  yield call(SecureStorage.setItem, 'stops', [
+    ...(prevStops, []),
+    ...getStopsFromTrip(locationBuffer)
+  ])
+  
   yield put({
     type: CLEAR_LOCATION_BUFFER,
   })

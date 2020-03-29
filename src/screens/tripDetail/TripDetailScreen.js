@@ -13,6 +13,7 @@ import {
 
 import MapView, { 
   Polyline,
+  Polygon,
 } from 'react-native-maps';
 
 import {
@@ -28,57 +29,78 @@ const edgePadding = {
   right: 20,
 }
 
-
-
-export default ({
-  route: {
-    params: {
-      tripId,
-    }
-  }
+const StopMarker = ({
+  coordinates,
+  ...props
 }) => {
+
+  coordinates= coordinates.map(({
+    longitude,
+    latitude
+  }) => ({
+    longitude: longitude + Math.random()*0.000001,
+    latitude: latitude + Math.random()*0.000001,
+  }))
+
+  if (coordinates.length > 2)
+    return (
+      <Polygon
+      coordinates={coordinates}
+      {...props}
+      />
+    )
+
+  return (
+    <Polyline
+    coordinates={coordinates}
+    {...props}
+    />
+  )
+
+}
+
+export default () => {
   const mapRef = useRef(null)
-  const [ coordinates, setCoordinates ] = useState()
-  const [ strokeColors, setStrokeColors ] = useState()
+  const [ stops, setStops ] = useState()
 
   useEffect(() => {
-    getTripDetails(tripId)
-  }, [ tripId ])
+    getStops()
+  }, [])
 
-  const getTripDetails = async (tripId) => {
-    const trip = await SecureStorage.getItem(tripId)
-    const parsedTrip = JSON.parse(trip)
-    const coords = parsedTrip.map(i => i.coords)
-    const stopIndexes = getStopIndexesFromTrip(parsedTrip)
-    const colors = coords.map((e, i) => stopIndexes.includes(i) ? Colors.red500 : Colors.green400 )
-
-    setStrokeColors(colors)
-    setCoordinates(coords)
+  const getStops = async () => {
+    const stops = await SecureStorage.getItem('stops')
+    setStops(stops)
   }
-  
-  const onMapReady = () => mapRef.current.fitToCoordinates(coordinates, {
-    edgePadding
-  })
+ 
+  const onMapReady = () => {
+    const coordinates = stops.reduce((p, c) => [...p, ...c.polygon], [])
+    mapRef.current.fitToCoordinates(coordinates, {
+      edgePadding
+    })
+  }
   
   return (
     <View 
     style={styles.container}>
-    { coordinates && (
+    { stops && (
       <MapView
       ref={mapRef}
       style={styles.map}
       onMapReady={onMapReady}
       zoomEnabled={true}
+      showsUserLocation={true}
       rotateEnabled={false}
       pitchEnabled={false}>
 
-        <Polyline
-        coordinates={coordinates}
-        strokeColor="#000" // fallback for when `strokeColors` is not supported by the map-provider
-        strokeColors={strokeColors}
-        strokeWidth={5}
+      {stops.map(stop => (
+        <StopMarker
+        strokeWidth={10}
+        strokeColor='red'
+        key={stop.startedAt}
+        coordinates={stop.polygon}
+
         />
-  
+      ))}  
 
       </MapView>
     )}

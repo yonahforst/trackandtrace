@@ -6,9 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import IntroConnector from '../intro/IntroConnector'
 import HomeConnector from '../home/HomeConnector'
-import TripsConnector from '../trips/TripsConnector'
 import HealthConnector from '../health/HealthConnector'
-// import TripDetailConnector from '../tripDetail/TripDetailConnector'
 
 import PaperTheme from '../../constants/Theme'
 import TripDetailScreen from '../tripDetail/TripDetailScreen';
@@ -46,11 +44,6 @@ export default ({
           options={{ title: i18n.t('nav_home') }}
           />
           <Stack.Screen 
-          name="trips" 
-          component={TripsConnector} 
-          options={{ title: i18n.t('nav_trips') }}
-          />
-          <Stack.Screen 
           name="health" 
           component={HealthConnector} 
           options={{ title: i18n.t('nav_health') }}
@@ -58,9 +51,7 @@ export default ({
           <Stack.Screen 
           name="tripDetail" 
           component={TripDetailScreen} 
-          options={({ route }) => ({ 
-            title: i18n.strftime(new Date(parseInt(route.params.tripId)), '%a %-d-%b %-H:%M')
-          })}
+          options={{ title: i18n.t('nav_stops') }}
           />
           
           </>

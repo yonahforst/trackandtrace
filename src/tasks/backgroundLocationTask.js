@@ -18,15 +18,10 @@ TaskManager.defineTask(BACKGROUND_LOCATION_TASK, ({
   if (error)
     console.error(error)
 
-  //ignore negative values.
-  const filteredLocations = locations.filter(l => l.coords.speed >= 0)
-  if (filteredLocations.length == 0)
-    return
-
   store.dispatch({
     type: LOCATION_UPDATED,
     payload: {
-      locations: filteredLocations,
+      locations,
     },
   })
   

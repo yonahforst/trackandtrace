@@ -68,7 +68,7 @@ export default ({
           style={styles.actions}>
 
             <Button
-            onPress={() => navigation.navigate('trips')}>
+            onPress={() => navigation.navigate('tripDetail')}>
             { i18n.t('home_go') }
             </Button>
           </Card.Actions>
